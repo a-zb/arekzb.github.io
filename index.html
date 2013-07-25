@@ -1,10 +1,136 @@
 <!DOCTYPE html>
-
-<html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
+    <meta charset="utf-8" />
 
-<title></title>
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Arek Z.B.</title>
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/foundation.css">
+
+    <script src="js/custom.modernizr.js"></script>
+
 </head>
+<body>
 
+<!-- Nav Bar -->
+
+<div class="row">
+    <div class="large-12 columns">
+        <div class="nav-bar right">
+            <ul class="button-group">
+                <li><a href="/" class="button">home</a></li>
+            </ul>
+        </div>
+        <h1>Arek Z.B. <small>project related pages</small></h1>
+        <hr />
+    </div>
+</div>
+
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns" role="content">
+
+        <article>
+
+            <h3><a href="http://php.net">Search on new PHP.net is not Firefox friendly</a></h3>
+            <h6>Written by <a href="http://github.com/arekzb">arekzb</a> on July 22, 2013.</h6>
+
+            <p>
+                I like the new design of PHP.net website. It sometimes happens in a beta phase,- there's
+                an issue that in my point of view is a show stopper.
+            </p>
+            <p>
+                I have tried to use the new search widget on php.net and have found it to
+                be a rather obtuse piece to work with. Not only does it enforce focus by taking the
+                value of the element present under the mouse, but it will happily deny
+                you using the backspace key to clear up the wrong suggestion. The mouse does not
+                have to be moved at all. It simply needs to be above an element in the list.
+            </p>
+            <p>
+                Chrome doesn't suffer suffer from the same behaviour, but it is not a browser bug.
+                Developers at php.net should take out the focus attribute, passed
+                to catcomplete in common.js script file.
+            </p>
+
+            <p>
+                <pre>
+                $('#headsearch-keywords').catcomplete({
+                ...
+                focus: function(event, ui) {
+                    $('#headsearch-keywords').val(ui.item.label);
+                    return false;
+                },
+                ....
+                });
+
+                </pre>
+            </p>
+
+            <p>
+                With the unnecessary focus callback out of the way, the auto-complete widget will no longer
+                intrude on keystrokes and backspace key. This has been submitted as feedback as well.
+                I hope that it gets addressed one way or another.
+            </p>
+
+
+
+        </article>
+
+        <hr />
+
+
+    </div>
+
+    <!-- End Main Content -->
+
+</div>
+
+<!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+                <p>&copy; MIT license</p>
+            </div>
+            <div class="large-6 columns">
+                <ul class="inline-list right">
+                    <li><a href="http://php.net">php</a></li>
+                    <li><a href="http://python.org">python</a></li>
+                    <li><a href="http://github.com/zendframework/zf2">zend</a></li>
+                    <li><a href="http://github.com/symfony/symfony">symfony</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.write('<script src=js/' +
+            ('__proto__' in {} ? 'zepto' : 'jquery') +
+            '.js><\/script>')
+</script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+</script>
+
+<!-- End Footer -->
+</body>
 </html>
-
